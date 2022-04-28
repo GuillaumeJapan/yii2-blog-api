@@ -50,7 +50,7 @@ class Post extends \yii\db\ActiveRecord
             [['body'], 'string'],
             [['created_at', 'updated_at', 'created_by'], 'integer'],
             [['title'], 'string', 'max' => 512],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
 
@@ -76,7 +76,7 @@ class Post extends \yii\db\ActiveRecord
      */
     public function getComments()
     {
-        return $this->hasMany(Comment::className(), ['post_id' => 'id']);
+        return $this->hasMany(Comment::class, ['post_id' => 'id']);
     }
 
     /**
@@ -86,7 +86,7 @@ class Post extends \yii\db\ActiveRecord
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
     /**
