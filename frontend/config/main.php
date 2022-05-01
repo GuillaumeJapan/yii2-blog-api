@@ -49,7 +49,7 @@ return [
             'rules' => [
                 [
                     'class' => UrlRule::class,
-                    'controller' => 'post',
+                    'controller' => ['post', 'comment'],
                     'pluralize' => false
                 ]
             ],

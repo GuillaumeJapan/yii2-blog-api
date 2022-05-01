@@ -2,8 +2,8 @@
 
 namespace frontend\resource;
 
-use common\models\Post as ModelsPost;
 use Yii;
+use common\models\Post as ModelsPost;
 
 class Post extends ModelsPost
 {
@@ -14,6 +14,11 @@ class Post extends ModelsPost
 
     public function extraFields()
     {
-        return ['created_at', 'updated_at', 'created_by'];
+        return ['comments', 'created_at', 'updated_at', 'created_by'];
+    }
+    
+    public function getComments()
+    {
+        return $this->hasMany(Comment::class, ['post_id' => 'id']);
     }
 }
